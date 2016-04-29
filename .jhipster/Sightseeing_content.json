@@ -1,0 +1,22 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "content",
+            "otherEntityName": "content",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "sightseeing",
+            "otherEntityName": "sightseeing",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20160429124041",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "sightseeing_content",
+    "pagination": "pager"
+}

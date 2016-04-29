@@ -1,0 +1,15 @@
+version: '2'
+services:
+    diploma-app:
+        image: diploma
+        external_links:
+            - diploma-mysql:mysql
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/diploma?useUnicode=true&characterEncoding=utf8&useSSL=false
+        ports:
+            - 8080:8080
+    diploma-mysql:
+        extends:
+            file: mysql.yml
+            service: diploma-mysql

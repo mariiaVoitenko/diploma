@@ -1,0 +1,24 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "language",
+            "otherEntityName": "language",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160429123656",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "country",
+    "pagination": "pager"
+}

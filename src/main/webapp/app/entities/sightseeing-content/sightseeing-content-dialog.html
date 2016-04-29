@@ -1,0 +1,38 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="mySightseeing_contentLabel" translate="diplomaApp.sightseeing_content.home.createOrEditLabel">Create or edit a Sightseeing Content</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.sightseeing_content.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.sightseeing_content.id" readonly />
+        </div>
+
+        <div class="form-group">
+            <label translate="diplomaApp.sightseeing_content.content" for="field_content">Content</label>
+            <select class="form-control" id="field_content" name="content" ng-model="vm.sightseeing_content.content" ng-options="content as content.id for content in vm.contents track by content.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="diplomaApp.sightseeing_content.sightseeing" for="field_sightseeing">Sightseeing</label>
+            <select class="form-control" id="field_sightseeing" name="sightseeing" ng-model="vm.sightseeing_content.sightseeing" ng-options="sightseeing as sightseeing.id for sightseeing in vm.sightseeings track by sightseeing.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
