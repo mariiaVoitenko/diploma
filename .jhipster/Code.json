@@ -1,0 +1,24 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "sightseeing",
+            "otherEntityName": "sightseeing",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "picture",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160509074842",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "code",
+    "pagination": "pager"
+}
