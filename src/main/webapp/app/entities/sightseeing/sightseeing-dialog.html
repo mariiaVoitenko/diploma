@@ -81,7 +81,35 @@
                 </p>
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label" for="field_rating">Rating</label>
+            <input type="number" class="form-control" name="rating" id="field_rating"
+                    ng-model="vm.sightseeing.rating"
+                    required />
+            <div ng-show="editForm.rating.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.rating.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.rating.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label for="field_category">Category</label>
+            <select class="form-control" id="field_category" name="category" ng-model="vm.sightseeing.category" ng-options="category as category.id for category in vm.categories track by category.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_region">Region</label>
+            <select class="form-control" id="field_region" name="region" ng-model="vm.sightseeing.region" ng-options="region as region.id for region in vm.regions track by region.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

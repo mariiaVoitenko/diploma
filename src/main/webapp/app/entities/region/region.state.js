@@ -9,17 +9,17 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('sightseeing', {
+        .state('region', {
             parent: 'entity',
-            url: '/sightseeing?page&sort&search',
+            url: '/region?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Sightseeings'
+                pageTitle: 'Regions'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/sightseeing/sightseeings.html',
-                    controller: 'SightseeingController',
+                    templateUrl: 'app/entities/region/regions.html',
+                    controller: 'RegionController',
                     controllerAs: 'vm'
                 }
             },
@@ -46,36 +46,36 @@
                 }]
             }
         })
-        .state('sightseeing-detail', {
+        .state('region-detail', {
             parent: 'entity',
-            url: '/sightseeing/{id}',
+            url: '/region/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Sightseeing'
+                pageTitle: 'Region'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/sightseeing/sightseeing-detail.html',
-                    controller: 'SightseeingDetailController',
+                    templateUrl: 'app/entities/region/region-detail.html',
+                    controller: 'RegionDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Sightseeing', function($stateParams, Sightseeing) {
-                    return Sightseeing.get({id : $stateParams.id});
+                entity: ['$stateParams', 'Region', function($stateParams, Region) {
+                    return Region.get({id : $stateParams.id});
                 }]
             }
         })
-        .state('sightseeing.new', {
-            parent: 'sightseeing',
+        .state('region.new', {
+            parent: 'region',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/sightseeing/sightseeing-dialog.html',
-                    controller: 'SightseeingDialogController',
+                    templateUrl: 'app/entities/region/region-dialog.html',
+                    controller: 'RegionDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -83,66 +83,61 @@
                         entity: function () {
                             return {
                                 name: null,
-                                info: null,
-                                latitude: null,
-                                longitude: null,
-                                photo: null,
-                                rating: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('sightseeing', null, { reload: true });
+                    $state.go('region', null, { reload: true });
                 }, function() {
-                    $state.go('sightseeing');
+                    $state.go('region');
                 });
             }]
         })
-        .state('sightseeing.edit', {
-            parent: 'sightseeing',
+        .state('region.edit', {
+            parent: 'region',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/sightseeing/sightseeing-dialog.html',
-                    controller: 'SightseeingDialogController',
+                    templateUrl: 'app/entities/region/region-dialog.html',
+                    controller: 'RegionDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Sightseeing', function(Sightseeing) {
-                            return Sightseeing.get({id : $stateParams.id});
+                        entity: ['Region', function(Region) {
+                            return Region.get({id : $stateParams.id});
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('sightseeing', null, { reload: true });
+                    $state.go('region', null, { reload: true });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('sightseeing.delete', {
-            parent: 'sightseeing',
+        .state('region.delete', {
+            parent: 'region',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/sightseeing/sightseeing-delete-dialog.html',
-                    controller: 'SightseeingDeleteController',
+                    templateUrl: 'app/entities/region/region-delete-dialog.html',
+                    controller: 'RegionDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Sightseeing', function(Sightseeing) {
-                            return Sightseeing.get({id : $stateParams.id});
+                        entity: ['Region', function(Region) {
+                            return Region.get({id : $stateParams.id});
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('sightseeing', null, { reload: true });
+                    $state.go('region', null, { reload: true });
                 }, function() {
                     $state.go('^');
                 });

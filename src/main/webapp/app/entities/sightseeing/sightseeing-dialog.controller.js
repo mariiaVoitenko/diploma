@@ -5,11 +5,13 @@
         .module('diplomaApp')
         .controller('SightseeingDialogController', SightseeingDialogController);
 
-    SightseeingDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Sightseeing'];
+    SightseeingDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Sightseeing', 'Category', 'Region'];
 
-    function SightseeingDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Sightseeing) {
+    function SightseeingDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Sightseeing, Category, Region) {
         var vm = this;
         vm.sightseeing = entity;
+        vm.categories = Category.query();
+        vm.regions = Region.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

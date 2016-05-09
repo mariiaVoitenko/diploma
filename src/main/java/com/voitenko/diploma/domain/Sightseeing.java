@@ -39,6 +39,16 @@ public class Sightseeing implements Serializable {
     @Column(name = "photo", nullable = false)
     private String photo;
 
+    @NotNull
+    @Column(name = "rating", nullable = false)
+    private Float rating;
+
+    @ManyToOne
+    private Category category;
+
+    @ManyToOne
+    private Region region;
+
     public Long getId() {
         return id;
     }
@@ -87,6 +97,30 @@ public class Sightseeing implements Serializable {
         this.photo = photo;
     }
 
+    public Float getRating() {
+        return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -116,6 +150,7 @@ public class Sightseeing implements Serializable {
             ", latitude='" + latitude + "'" +
             ", longitude='" + longitude + "'" +
             ", photo='" + photo + "'" +
+            ", rating='" + rating + "'" +
             '}';
     }
 }

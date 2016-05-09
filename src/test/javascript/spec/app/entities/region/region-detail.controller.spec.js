@@ -2,37 +2,35 @@
 
 describe('Controller Tests', function() {
 
-    describe('Sightseeing Management Detail Controller', function() {
+    describe('Region Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockSightseeing, MockCategory, MockRegion;
+        var MockEntity, MockRegion, MockCountry;
         var createController;
 
         beforeEach(inject(function($injector) {
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
-            MockSightseeing = jasmine.createSpy('MockSightseeing');
-            MockCategory = jasmine.createSpy('MockCategory');
             MockRegion = jasmine.createSpy('MockRegion');
+            MockCountry = jasmine.createSpy('MockCountry');
             
 
             var locals = {
                 '$scope': $scope,
                 '$rootScope': $rootScope,
                 'entity': MockEntity ,
-                'Sightseeing': MockSightseeing,
-                'Category': MockCategory,
-                'Region': MockRegion
+                'Region': MockRegion,
+                'Country': MockCountry
             };
             createController = function() {
-                $injector.get('$controller')("SightseeingDetailController", locals);
+                $injector.get('$controller')("RegionDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'diplomaApp:sightseeingUpdate';
+                var eventType = 'diplomaApp:regionUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

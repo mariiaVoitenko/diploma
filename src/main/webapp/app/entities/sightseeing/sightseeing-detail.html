@@ -28,6 +28,21 @@
             <span>{{vm.sightseeing.photo}}</span>
         </dd>
         <hr>
+        <dt><span>Rating</span></dt>
+        <dd>
+            <span>{{vm.sightseeing.rating}}</span>
+        </dd>
+        <hr>
+        <dt><span>Category</span></dt>
+        <dd>
+            <a ui-sref="category-detail({id:vm.sightseeing.category.id})">{{vm.sightseeing.category.id}}</a>
+        </dd>
+        <hr>
+        <dt><span>Region</span></dt>
+        <dd>
+            <a ui-sref="region-detail({id:vm.sightseeing.region.id})">{{vm.sightseeing.region.id}}</a>
+        </dd>
+        <hr>
     </dl>
 
     <button type="submit"

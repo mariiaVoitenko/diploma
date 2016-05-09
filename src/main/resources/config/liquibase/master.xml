@@ -11,8 +11,11 @@
     <include file="classpath:config/liquibase/changelog/20160429123826_added_entity_Content.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160429123957_added_entity_Sightseeing.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160429124041_added_entity_Sightseeing_content.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160509070036_added_entity_Region.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20160429123656_added_entity_constraints_Country.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160429124041_added_entity_constraints_Sightseeing_content.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160509070036_added_entity_constraints_Region.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160429123957_added_entity_constraints_Sightseeing.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

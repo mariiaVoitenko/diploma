@@ -5,9 +5,9 @@
         .module('diplomaApp')
         .controller('SightseeingDetailController', SightseeingDetailController);
 
-    SightseeingDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Sightseeing'];
+    SightseeingDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Sightseeing', 'Category', 'Region'];
 
-    function SightseeingDetailController($scope, $rootScope, $stateParams, entity, Sightseeing) {
+    function SightseeingDetailController($scope, $rootScope, $stateParams, entity, Sightseeing, Category, Region) {
         var vm = this;
         vm.sightseeing = entity;
         

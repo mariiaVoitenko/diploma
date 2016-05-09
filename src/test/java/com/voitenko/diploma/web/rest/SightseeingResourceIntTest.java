@@ -54,6 +54,9 @@ public class SightseeingResourceIntTest {
     private static final String DEFAULT_PHOTO = "AAAAA";
     private static final String UPDATED_PHOTO = "BBBBB";
 
+    private static final Float DEFAULT_RATING = 1F;
+    private static final Float UPDATED_RATING = 2F;
+
     @Inject
     private SightseeingRepository sightseeingRepository;
 
@@ -85,6 +88,7 @@ public class SightseeingResourceIntTest {
         sightseeing.setLatitude(DEFAULT_LATITUDE);
         sightseeing.setLongitude(DEFAULT_LONGITUDE);
         sightseeing.setPhoto(DEFAULT_PHOTO);
+        sightseeing.setRating(DEFAULT_RATING);
     }
 
     @Test
@@ -108,6 +112,7 @@ public class SightseeingResourceIntTest {
         assertThat(testSightseeing.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
         assertThat(testSightseeing.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
         assertThat(testSightseeing.getPhoto()).isEqualTo(DEFAULT_PHOTO);
+        assertThat(testSightseeing.getRating()).isEqualTo(DEFAULT_RATING);
     }
 
     @Test
@@ -202,6 +207,24 @@ public class SightseeingResourceIntTest {
 
     @Test
     @Transactional
+    public void checkRatingIsRequired() throws Exception {
+        int databaseSizeBeforeTest = sightseeingRepository.findAll().size();
+        // set the field null
+        sightseeing.setRating(null);
+
+        // Create the Sightseeing, which fails.
+
+        restSightseeingMockMvc.perform(post("/api/sightseeings")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(sightseeing)))
+                .andExpect(status().isBadRequest());
+
+        List<Sightseeing> sightseeings = sightseeingRepository.findAll();
+        assertThat(sightseeings).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllSightseeings() throws Exception {
         // Initialize the database
         sightseeingRepository.saveAndFlush(sightseeing);
@@ -215,7 +238,8 @@ public class SightseeingResourceIntTest {
                 .andExpect(jsonPath("$.[*].info").value(hasItem(DEFAULT_INFO.toString())))
                 .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.doubleValue())))
                 .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.doubleValue())))
-                .andExpect(jsonPath("$.[*].photo").value(hasItem(DEFAULT_PHOTO.toString())));
+                .andExpect(jsonPath("$.[*].photo").value(hasItem(DEFAULT_PHOTO.toString())))
+                .andExpect(jsonPath("$.[*].rating").value(hasItem(DEFAULT_RATING.doubleValue())));
     }
 
     @Test
@@ -233,7 +257,8 @@ public class SightseeingResourceIntTest {
             .andExpect(jsonPath("$.info").value(DEFAULT_INFO.toString()))
             .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE.doubleValue()))
             .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE.doubleValue()))
-            .andExpect(jsonPath("$.photo").value(DEFAULT_PHOTO.toString()));
+            .andExpect(jsonPath("$.photo").value(DEFAULT_PHOTO.toString()))
+            .andExpect(jsonPath("$.rating").value(DEFAULT_RATING.doubleValue()));
     }
 
     @Test
@@ -259,6 +284,7 @@ public class SightseeingResourceIntTest {
         updatedSightseeing.setLatitude(UPDATED_LATITUDE);
         updatedSightseeing.setLongitude(UPDATED_LONGITUDE);
         updatedSightseeing.setPhoto(UPDATED_PHOTO);
+        updatedSightseeing.setRating(UPDATED_RATING);
 
         restSightseeingMockMvc.perform(put("/api/sightseeings")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -274,6 +300,7 @@ public class SightseeingResourceIntTest {
         assertThat(testSightseeing.getLatitude()).isEqualTo(UPDATED_LATITUDE);
         assertThat(testSightseeing.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
         assertThat(testSightseeing.getPhoto()).isEqualTo(UPDATED_PHOTO);
+        assertThat(testSightseeing.getRating()).isEqualTo(UPDATED_RATING);
     }
 
     @Test
