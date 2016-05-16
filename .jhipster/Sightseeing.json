@@ -55,6 +55,10 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "votes_count",
+            "fieldType": "Long"
         }
     ],
     "changelogDate": "20160429123957",

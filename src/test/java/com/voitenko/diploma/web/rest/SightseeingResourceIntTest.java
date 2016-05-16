@@ -57,6 +57,9 @@ public class SightseeingResourceIntTest {
     private static final Float DEFAULT_RATING = 1F;
     private static final Float UPDATED_RATING = 2F;
 
+    private static final Long DEFAULT_VOTES_COUNT = 1L;
+    private static final Long UPDATED_VOTES_COUNT = 2L;
+
     @Inject
     private SightseeingRepository sightseeingRepository;
 
@@ -89,6 +92,7 @@ public class SightseeingResourceIntTest {
         sightseeing.setLongitude(DEFAULT_LONGITUDE);
         sightseeing.setPhoto(DEFAULT_PHOTO);
         sightseeing.setRating(DEFAULT_RATING);
+        sightseeing.setVotes_count(DEFAULT_VOTES_COUNT);
     }
 
     @Test
@@ -113,6 +117,7 @@ public class SightseeingResourceIntTest {
         assertThat(testSightseeing.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
         assertThat(testSightseeing.getPhoto()).isEqualTo(DEFAULT_PHOTO);
         assertThat(testSightseeing.getRating()).isEqualTo(DEFAULT_RATING);
+        assertThat(testSightseeing.getVotes_count()).isEqualTo(DEFAULT_VOTES_COUNT);
     }
 
     @Test
@@ -239,7 +244,8 @@ public class SightseeingResourceIntTest {
                 .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.doubleValue())))
                 .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.doubleValue())))
                 .andExpect(jsonPath("$.[*].photo").value(hasItem(DEFAULT_PHOTO.toString())))
-                .andExpect(jsonPath("$.[*].rating").value(hasItem(DEFAULT_RATING.doubleValue())));
+                .andExpect(jsonPath("$.[*].rating").value(hasItem(DEFAULT_RATING.doubleValue())))
+                .andExpect(jsonPath("$.[*].votes_count").value(hasItem(DEFAULT_VOTES_COUNT.intValue())));
     }
 
     @Test
@@ -258,7 +264,8 @@ public class SightseeingResourceIntTest {
             .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE.doubleValue()))
             .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE.doubleValue()))
             .andExpect(jsonPath("$.photo").value(DEFAULT_PHOTO.toString()))
-            .andExpect(jsonPath("$.rating").value(DEFAULT_RATING.doubleValue()));
+            .andExpect(jsonPath("$.rating").value(DEFAULT_RATING.doubleValue()))
+            .andExpect(jsonPath("$.votes_count").value(DEFAULT_VOTES_COUNT.intValue()));
     }
 
     @Test
@@ -285,6 +292,7 @@ public class SightseeingResourceIntTest {
         updatedSightseeing.setLongitude(UPDATED_LONGITUDE);
         updatedSightseeing.setPhoto(UPDATED_PHOTO);
         updatedSightseeing.setRating(UPDATED_RATING);
+        updatedSightseeing.setVotes_count(UPDATED_VOTES_COUNT);
 
         restSightseeingMockMvc.perform(put("/api/sightseeings")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -301,6 +309,7 @@ public class SightseeingResourceIntTest {
         assertThat(testSightseeing.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
         assertThat(testSightseeing.getPhoto()).isEqualTo(UPDATED_PHOTO);
         assertThat(testSightseeing.getRating()).isEqualTo(UPDATED_RATING);
+        assertThat(testSightseeing.getVotes_count()).isEqualTo(UPDATED_VOTES_COUNT);
     }
 
     @Test

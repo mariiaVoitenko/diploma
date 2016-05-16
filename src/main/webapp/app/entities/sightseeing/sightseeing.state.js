@@ -88,6 +88,7 @@
                                 longitude: null,
                                 photo: null,
                                 rating: null,
+                                votes_count: null,
                                 id: null
                             };
                         }

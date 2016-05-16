@@ -43,6 +43,9 @@ public class Sightseeing implements Serializable {
     @Column(name = "rating", nullable = false)
     private Float rating;
 
+    @Column(name = "votes_count")
+    private Long votes_count;
+
     @ManyToOne
     private Category category;
 
@@ -105,6 +108,14 @@ public class Sightseeing implements Serializable {
         this.rating = rating;
     }
 
+    public Long getVotes_count() {
+        return votes_count;
+    }
+
+    public void setVotes_count(Long votes_count) {
+        this.votes_count = votes_count;
+    }
+
     public Category getCategory() {
         return category;
     }
@@ -151,6 +162,7 @@ public class Sightseeing implements Serializable {
             ", longitude='" + longitude + "'" +
             ", photo='" + photo + "'" +
             ", rating='" + rating + "'" +
+            ", votes_count='" + votes_count + "'" +
             '}';
     }
 }

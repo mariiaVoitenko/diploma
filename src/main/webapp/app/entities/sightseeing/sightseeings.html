@@ -25,6 +25,7 @@
                     <th jh-sort-by="longitude"><span>Longitude</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="photo"><span>Photo</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="rating"><span>Rating</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="votes_count"><span translate="diplomaApp.sightseeing.votes_count">Votes Count</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="category.id"><span>Category</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="region.id"><span>Region</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -39,6 +40,7 @@
                     <td>{{sightseeing.longitude}}</td>
                     <td>{{sightseeing.photo}}</td>
                     <td>{{sightseeing.rating}}</td>
+                    <td>{{sightseeing.votes_count}}</td>
                     <td>
                         <a ui-sref="category-detail({id:sightseeing.category.id})">{{sightseeing.category.id}}</a>
                     </td>
