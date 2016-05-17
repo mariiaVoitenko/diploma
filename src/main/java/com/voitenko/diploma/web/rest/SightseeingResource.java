@@ -75,15 +75,13 @@ public class SightseeingResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Sightseeing> updateSightseeing(@Valid @RequestBody Sightseeing sightseeing) throws URISyntaxException {
+    public ResponseEntity<Sightseeing> updateSightseeing(@RequestBody Sightseeing sightseeing) throws URISyntaxException {
         log.debug("REST request to update Sightseeing : {}", sightseeing);
         if (sightseeing.getId() == null) {
             return createSightseeing(sightseeing);
         }
-        Sightseeing result = sightseeingRepository.save(sightseeing);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert("sightseeing", sightseeing.getId().toString()))
-            .body(result);
+        sightseeingRepository.save(sightseeing);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     /**
