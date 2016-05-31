@@ -118,7 +118,6 @@ public class SightseeingResource {
             ex.printStackTrace();
         }
 
-
         Sightseeing sightseeing = sightseeingRepository.findOne(id);
         InputStream in = new BufferedInputStream(new FileInputStream(folder  + sightseeing.getPhoto()));
 
