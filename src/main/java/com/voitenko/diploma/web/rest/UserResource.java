@@ -9,7 +9,6 @@ import com.voitenko.diploma.security.AuthoritiesConstants;
 import com.voitenko.diploma.service.MailService;
 import com.voitenko.diploma.service.UserService;
 import com.voitenko.diploma.web.rest.dto.ManagedUserDTO;
-import com.voitenko.diploma.web.rest.dto.UserDTO;
 import com.voitenko.diploma.web.rest.util.HeaderUtil;
 import com.voitenko.diploma.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -25,10 +24,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.net.URISyntaxException;
-import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -166,7 +167,7 @@ public class UserResource {
 
     /**
      * GET  /users : get all users.
-     * 
+     *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and with body all users
      * @throws URISyntaxException if the pagination headers couldnt be generated
